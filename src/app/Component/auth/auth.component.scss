@@ -1,0 +1,148 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #b3b3b3;
+  padding: 1rem;
+}
+
+.left-panel {
+  background-color: rgb(230, 228, 228);
+  padding: 70px;
+  text-align: center;
+  border-radius: 20px 0 0 10px;
+}
+
+.left-panel img {
+  width: 250px;
+  border-radius: 50%;
+  height: auto;
+}
+
+
+.right-panel {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  gap: 15px;
+}
+
+.tab-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; 
+  gap: 60px;                
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+.tab-header span {
+  cursor: pointer;
+  color: gray;
+  width: 50%;
+  text-align: center;
+}
+
+.tab-header .active {
+  color: #A03037;
+  border-bottom: 2px solid #A03037;
+}
+
+.input-field {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+  background-color: white;
+}
+
+.forgot-password {
+  width: 100%;
+  text-align: right;
+  font-size: 13px;
+  color: gray;
+  cursor: pointer;
+}
+
+.btn-login,
+.btn-signup {
+  background-color: #A03037 !important;
+  color: white !important;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.btn-login:disabled,
+.btn-signup:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.or-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+
+.social-login {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.facebook,
+.google {
+  border: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 48%;
+  text-align: center;
+}
+
+.facebook {
+  background-color: #1877f2;
+  color: white;
+}
+
+.google {
+  background-color: #bcb7b7;
+  color: black;
+}
+
+.facebook:hover {
+  background-color: #145db2;
+}
+
+.google:hover {
+  background-color: #e8e4e4;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .right-panel {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 1rem;
+    border-radius: 15px;
+  }
+}

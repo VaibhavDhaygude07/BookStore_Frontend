@@ -1,0 +1,71 @@
+<div class="auth-container">
+    <div class="left-panel">
+      <img src="assets/login.svg" alt="Online Book Shopping" />
+      <p>ONLINE BOOK SHOPPING</p>
+    </div>
+  
+    <div class="right-panel mat-elevation-z4" [ngClass]="{'login-active': isLogin}">
+      <div class="tab-header">
+        <span [class.active]="isLogin" (click)="toggleForm('login')">LOGIN</span>
+        <span [class.active]="!isLogin" (click)="toggleForm('signup')">SIGNUP</span>
+      </div>
+  
+      <!-- Login Form -->
+      <form *ngIf="isLogin" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <mat-form-field appearance="fill">
+          <mat-label>Email Id</mat-label>
+          <input matInput formControlName="email" />
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+        </mat-form-field>
+  
+        <div class="forgot-password">Forgot Password?</div>
+  
+        <button type="submit" class="btn-login" [disabled]="loginForm.invalid">Login</button>
+  
+        <div class="or-text">OR</div>
+  
+        <div class="social-login">
+          <button type="button" class="facebook">Facebook</button>
+          <button type="button" class="google">Google</button>
+        </div>
+      </form>
+  
+      <!-- Signup Form -->
+      <form *ngIf="!isLogin" [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <mat-form-field appearance="fill">
+          <mat-label>Full Name</mat-label>
+          <input matInput formControlName="fullName" />
+          <mat-error *ngIf="signupForm.get('fullName')?.hasError('required')">Full Name is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Email Id</mat-label>
+          <input matInput formControlName="emailId" />
+          <mat-error *ngIf="signupForm.get('email')?.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="signupForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="signupForm.get('password')?.hasError('required')">Password is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput formControlName="mobileNumber" />
+          <mat-error *ngIf="signupForm.get('mobileNumber')?.hasError('required')">Mobile number is required</mat-error>
+        </mat-form-field>
+  
+        <button type="submit" class="btn-signup" [disabled]="signupForm.invalid">Signup</button>
+      </form>
+    </div>
+  </div>
+  
