@@ -6,16 +6,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+
 import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './Component/auth/auth.component';
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import { BookComponent } from './Component/book/book.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    DashboardComponent,
+    BookComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -27,6 +36,7 @@ import { AuthComponent } from './Component/auth/auth.component';
     MatButtonModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    MatIconModule,
     HttpClientModule
   ],
   providers: [

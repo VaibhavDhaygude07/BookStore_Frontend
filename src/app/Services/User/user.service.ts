@@ -14,7 +14,7 @@ export class UserService {
         'content-type':'application/json'
       })
     }
-    return this.httpService.PostMethod('https://localhost:7288/api/User/login',reqData,false,header)
+    return this.httpService.postMethod('https://localhost:7288/api/User/login',reqData,false,header)
   }
 
   Register(reqData:any){
@@ -24,6 +24,6 @@ export class UserService {
 
       })
     }
-    return this.httpService.PostMethod('https://localhost:7288/api/User/register',reqData,false,header)
+    return this.httpService.postMethod('https://localhost:7288/api/User/register',reqData,false,header)
   }
 }
