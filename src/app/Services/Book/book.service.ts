@@ -22,13 +22,29 @@ export class BookService {
     return this.httpclient.get('https://localhost:7288/api/book', { headers });
   }
 
-  searchBook(auther: string): Observable<any> {
+  searchBook(author: string): Observable<any> {
     const token = localStorage.getItem('token');
-
+  
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
-    return this.httpclient.get(`https://localhost:7288/api/book/search/${auther}`, { headers });
+  
+    return this.httpclient.get(`https://localhost:7288/api/book/search?author=${encodeURIComponent(author)}`, { headers });
   }
+
+  sortBooksByPrice(order: 'asc' | 'desc'): Observable<any> {
+    const token = localStorage.getItem('token');
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  
+    return this.httpclient.get(`https://localhost:7288/api/book/sort?price=${order}`, { headers });
+  }
+  
+  
+  
+  
 }

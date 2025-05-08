@@ -4,12 +4,12 @@
       Books <span class="books-count">({{ books.length }} Items)</span>
     </h1>
     <div class="sort-dropdown">
-      <select>
-        <option>Sort by relevance</option>
-        <option>Price: Low to High</option>
-        <option>Price: High to Low</option>
-      
+      <select (change)="onSortChange($event)">
+        <option value="">Sort by relevance</option>
+        <option value="asc">Price: Low to High</option>
+        <option value="desc">Price: High to Low</option>
       </select>
+      
     </div>
   </div>
 

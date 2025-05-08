@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { BookService } from '../../Services/Book/book.service';
 
 interface Book {
@@ -22,9 +22,10 @@ interface Book {
   styleUrl: './book.component.scss'
 })
 export class BookComponent {
+  @Input() searchTerm: string = '';
   books: Book[] = [];
   error: any;
-  searchTerm: string = '';
+ 
 
 
 
@@ -32,6 +33,17 @@ export class BookComponent {
 
   ngOnInit(): void {
     this.fetchBooks();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['searchTerm']) {
+      const term = this.searchTerm.trim();
+      if (term.length > 0) {
+        this.searchBooks(term);
+      } else {
+        this.fetchBooks();
+      }
+    }
   }
 
   fetchBooks(): void {
@@ -50,25 +62,47 @@ export class BookComponent {
     });
   }
 
-  onSearchChange(): void {
-    if (this.searchTerm.trim() === '') {
-      this.fetchBooks();
-      return;
-    }
-  
-    this.bookService.searchBook(this.searchTerm).subscribe({
-      next: (response: any) => {
-        if (response && response.success && response.data) {
-          this.books = response.data;
+  searchBooks(author: string): void {
+    this.bookService.searchBook(author).subscribe({
+      next: (res: any) => {
+        if (res.success && res.data) {
+          this.books = res.data;
+        } else {
+          this.books = [];
+        }
+      },
+      error: () => {
+        this.error = 'Search failed';
+      }
+    });
+  }
+
+  sortBooks(order: 'asc' | 'desc'): void {
+    this.bookService.sortBooksByPrice(order).subscribe({
+      next: (res: any) => {
+        if (res.success && res.data) {
+          this.books = res.data;
+        } else {
+          this.books = [];
         }
       },
       error: (err) => {
-        this.error = 'Search failed';
+        this.error = 'Sort failed';
         console.error(err);
       }
     });
   }
 
+  onSortChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const sortOrder = selectElement.value;
+  
+    if (sortOrder === 'asc' || sortOrder === 'desc') {
+      this.sortBooks(sortOrder);
+    }
+  }
+  
+  
  
   
 }
