@@ -1,146 +1,136 @@
-.cart-container {
+.cart-box {
   max-width: 800px;
   margin: auto;
   padding: 20px;
-  background: #fff;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+  margin-top: 30px; /* Add spacing from top */
 }
 
+/* Header and Location */
 .cart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .cart-header h2 {
-  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .location {
   display: flex;
   align-items: center;
   gap: 5px;
-}
-
-.location mat-icon {
   color: #a03037;
+  font-weight: bold;
 }
 
-.location select {
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.cart-item {
+/* Each item row */
+.item-row {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  background-color: white;
-  flex-wrap: wrap;
+  align-items: center; /* Align items horizontally */
+  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
-.book-info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex: 1;
-  min-width: 250px;
+.item-row:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.book-img {
-  width: 90px;
-  height: 120px;
+/* Book image */
+.left-section {
+  margin-right: 20px;
+}
+
+.book-image {
+  width: 110px;
+  height: 140px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
-.book-info h3 {
+/* Book details */
+.middle-section {
+  flex: 1;
+}
+
+.middle-section h3 {
   margin: 0;
   font-size: 18px;
   font-weight: 600;
 }
 
-.book-info p {
+.middle-section p {
   margin: 5px 0;
   color: #555;
-  font-size: 14px;
 }
 
-.discount {
+.price-discount {
   font-weight: bold;
-  color: black;
   margin-right: 10px;
 }
 
-.original {
+.price-original {
   text-decoration: line-through;
   color: #999;
-  font-size: 13px;
+  font-size: 14px;
 }
 
-.controls {
+/* Quantity controls and remove button */
+.quantity-section {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+  margin-right: 20px;
 }
 
-.controls button {
-  padding: 6px 12px;
-  border: none;
-//   background-color: #eee;
-  border-radius: 4px;
+.quantity-section button {
+  padding: 4px 10px;
+  border: 1px solid #aaa;
+  background: white;
   cursor: pointer;
   font-size: 16px;
 }
 
-.controls input {
-  width: 50px;
+.quantity-section input {
+  width: 40px;
   text-align: center;
-  padding: 5px;
+  margin: 0 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 4px;
 }
 
-.remove-btn {
-  background-color: transparent;
+.remove-button {
+  background: none;
+  border: none;
   color: #a03037;
   font-weight: bold;
-  border: none;
-  margin-left: 10px;
   cursor: pointer;
+  font-size: 14px;
 }
 
-
+/* Place order button */
+.place-order-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  align-items: center; /* Align place order button in line with quantity */
+}
 
 .place-order-btn {
   background-color: #337ab7;
-  color: rgb(235, 230, 230);
-  padding: 12px 24px;
+  color: white;
+  padding: 12px 28px;
   border: none;
   border-radius: 5px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-}
-
-@media screen and (max-width: 768px) {
-  .cart-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .controls {
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .place-order-container {
-    justify-content: center;
-  }
 }

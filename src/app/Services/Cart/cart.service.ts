@@ -59,5 +59,25 @@ getItemByCartId(cartId: number) {
     };
     return this.httpService.delete(`https://localhost:7288/api/cart/${cartId}`, true, headers);
   }
+
+  getCustomerDetails() {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`
+      }
+    };
+    return this.httpService.get('https://localhost:7288/api/cart/customer', true, headers);
+  }
+
+  updateCartItem(cartId: number, data: any) {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`
+      }
+    };
+    return this.httpService.put(`https://localhost:7288/api/cart/${cartId}`, data, true, headers);
+  }
  
 }

@@ -1,37 +1,39 @@
-<div class="cart-container">
+<div class="cart-box">
+  <!-- Header and Location -->
   <div class="cart-header">
     <h2>My cart ({{ cartItems.length }})</h2>
     <div class="location">
       <mat-icon>location_on</mat-icon>
-      <select>
-        <option>Use current location</option>
-        <!-- Add more options as needed -->
-      </select>
+      <span>Use current location</span>
     </div>
   </div>
 
-  <div *ngFor="let item of cartItems" class="cart-item">
-    <div class="book-info">
-      <img [src]="item.book?.bookImage || 'assets/default-book.png'" alt="Book Cover" class="book-img" />
-      <div>
-        <h3>{{ item.book?.bookName }}</h3>
-        <p>by {{ item.book?.author }}</p>
-        <p>
-          <span class="discount">Rs. {{ item.book?.discountPrice }}</span>
-          <span class="original">Rs. {{ item.book?.price }}</span>
-        </p>
+  <!-- All items listed inside a single box -->
+  <div *ngFor="let item of cartItems" class="item-row">
+    <div class="left-section">
+      <img [src]="item.book?.bookImage || 'assets/default-book.png'" class="book-image" alt="Book" />
+    </div>
+    <div class="middle-section">
+      <h3>{{ item.book?.bookName }}</h3>
+      <p>by {{ item.book?.author }}</p>
+      <p>
+        <span class="price-discount">Rs. {{ item.book?.discountPrice }}</span>
+        <span class="price-original">Rs. {{ item.book?.price }}</span>
+      </p>
+
+      <div class="quantity-section">
+        <button (click)="decreaseQuantity(item)">-</button>
+        <input type="number" [(ngModel)]="item.bookQuantity" />
+        <button (click)="increaseQuantity(item)">+</button>
       </div>
-    </div>
 
-    <div class="controls">
-      <button (click)="decreaseQuantity(item)">-</button>
-      <input type="number" [(ngModel)]="item.bookQuantity" />
-      <button (click)="increaseQuantity(item)">+</button>
-      <button (click)="removeItemFromCart(item)" class="remove-btn">Remove</button>
-       <button class="place-order-btn">PLACE ORDER</button>
+      <button class="remove-button" (click)="removeItemFromCart(item)">Remove</button>
     </div>
   </div>
 
-  <router-outlet></router-outlet>
-
-  
+  <!-- Place order button -->
+  <div class="place-order-container">
+    <button class="place-order-btn">PLACE ORDER</button>
+  </div>
+</div>
+<router-outlet></router-outlet>

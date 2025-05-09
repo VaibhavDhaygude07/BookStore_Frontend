@@ -23,6 +23,14 @@ interface Book {
   description: string;
   quantity: number;
 }
+interface customer  {
+  fullName: '',
+  mobileNumber: '',
+  address: '',
+  city: '',
+  state: '',
+  type: 'Home'
+};
 
 
 @Component({
@@ -100,4 +108,11 @@ getAllCartItems(): void {
       }
     });
   }
+
+  
+
+
+
+
+ 
 }
