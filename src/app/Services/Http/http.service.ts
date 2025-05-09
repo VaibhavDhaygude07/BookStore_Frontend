@@ -20,6 +20,23 @@ export class HttpService {
   get(reqUrl: string, token: boolean = false, httpOption: any = {}): Observable<any> {
     return this.http.get(reqUrl, token ? httpOption : {});
   }
+  getToken(reqUrl: string, token: boolean = true, httpOption: any = {}): Observable<any> {
+    return this.http.get(reqUrl, token ? httpOption : {});
+  }
+
+  put(reqUrl: string, reqData: any, token: boolean = false, httpOption: any = {}): Observable<any> {
+    return this.http.put(reqUrl, reqData, token ? httpOption : {});
+  }
+  // putToken(reqUrl: string, reqData: any, token: boolean = true, httpOption: any = {}): Observable<any> {
+  //   return this.http.put(reqUrl, reqData, token ? httpOption : {});
+  // }
+  delete(reqUrl: string, token: boolean = false, httpOption: any = {}): Observable<any> {
+    return this.http.delete(reqUrl, token ? httpOption : {});
+  }
+  
+  
+
+  
   
 
 }

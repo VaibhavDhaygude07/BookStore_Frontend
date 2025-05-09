@@ -10,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  
 }
 
 .books-title {
@@ -33,6 +34,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
+
 }
 
 .book-card {
@@ -41,6 +43,7 @@
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-5px);

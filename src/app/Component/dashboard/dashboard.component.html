@@ -1,7 +1,10 @@
 <header class="navbar">
     <div class="navbar-section logo-section">
       <mat-icon aria-label="Menu">menu_book</mat-icon>
-      <span class="logo-text">Bookstore</span>
+      <a routerLink="/dashboard" class="logo-link">
+        <span class="logo-text">Bookstore</span>
+      </a>
+      
     </div>
   
     <div class="navbar-section search-section">
@@ -13,14 +16,17 @@
         <mat-icon aria-label="Profile">person</mat-icon>
         <span>Profile</span>
       </div>
-      <div class="nav-item">
+      <a routerLink="/dashboard/cart" class="nav-item">
         <mat-icon aria-label="Cart">shopping_cart</mat-icon>
         <span>Cart</span>
-      </div>
+      </a>
+
+
     </div>
   </header>
   
-  <app-book [searchTerm]="searchTerm"></app-book>
+  <!-- <app-book [searchTerm]="searchTerm"></app-book> -->
+  <router-outlet></router-outlet>
   
   <footer class="footer">
     <p>Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>

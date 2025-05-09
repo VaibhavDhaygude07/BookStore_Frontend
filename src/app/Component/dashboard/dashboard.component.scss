@@ -26,6 +26,16 @@ body {
     font-size: 22px;
     font-weight: bold;
   }
+
+  a.router-link-active, .logo-link {
+    color: white !important; 
+    text-decoration: none;    
+  }
+  
+  a.router-link-active:hover, .logo-link:hover {
+    color: white !important;  
+    text-decoration: none;    
+  }
   
   .search-section {
     flex: 1;

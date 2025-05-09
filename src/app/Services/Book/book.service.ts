@@ -43,8 +43,16 @@ export class BookService {
   
     return this.httpclient.get(`https://localhost:7288/api/book/sort?price=${order}`, { headers });
   }
+
+  getBookById(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
   
-  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.httpclient.get(`https://localhost:7288/api/book/${id}`, { headers });
+  }
   
   
 }

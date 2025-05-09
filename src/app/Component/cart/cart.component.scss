@@ -1,0 +1,146 @@
+.cart-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-header h2 {
+  margin: 0;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.location mat-icon {
+  color: #a03037;
+}
+
+.location select {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background-color: white;
+  flex-wrap: wrap;
+}
+
+.book-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  min-width: 250px;
+}
+
+.book-img {
+  width: 90px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.book-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.book-info p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.discount {
+  font-weight: bold;
+  color: black;
+  margin-right: 10px;
+}
+
+.original {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 13px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.controls button {
+  padding: 6px 12px;
+  border: none;
+//   background-color: #eee;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.controls input {
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.remove-btn {
+  background-color: transparent;
+  color: #a03037;
+  font-weight: bold;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+
+
+.place-order-btn {
+  background-color: #337ab7;
+  color: rgb(235, 230, 230);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .controls {
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .place-order-container {
+    justify-content: center;
+  }
+}

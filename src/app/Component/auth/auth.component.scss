@@ -20,7 +20,6 @@
   height: auto;
 }
 
-
 .right-panel {
   background: white;
   border-radius: 8px;
@@ -29,20 +28,19 @@
   padding: 80px;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   gap: 15px;
 }
 
 .tab-header {
   width: 100%;
   display: flex;
-  justify-content: flex-start; 
-  gap: 60px;                
+  justify-content: flex-start;
+  gap: 60px;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
 }
-
 
 .tab-header span {
   cursor: pointer;
@@ -137,16 +135,31 @@ mat-form-field {
   background-color: #e8e4e4;
 }
 
-/* Mobile Responsive */
+
 @media screen and (max-width: 768px) {
   .auth-container {
     flex-direction: column;
   }
 
+  .left-panel {
+    display: none; 
+  }
+
   .right-panel {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 1rem;
-    border-radius: 15px;
+    width: 90%;
+    max-width: 320px;
+    padding: 40px 20px; 
+    border-radius: 12px;
+  }
+
+  .tab-header {
+    gap: 30px;
+    font-size: 18px;
+  }
+
+  .btn-login,
+  .btn-signup {
+    font-size: 14px;
+    padding: 10px;
   }
 }

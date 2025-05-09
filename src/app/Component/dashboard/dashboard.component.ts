@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BookService } from '../../Services/Book/book.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +9,12 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   searchTerm: string = '';
+  bookService: any;
+  
 
-  onSearchChange(event: any): void {
-    const input = event.target as HTMLInputElement;
-    this.searchTerm = input.value;
+  onSearchChange(event: any) {
+    this.bookService.setSearchText(event.target.value);
   }
+  
 
 }

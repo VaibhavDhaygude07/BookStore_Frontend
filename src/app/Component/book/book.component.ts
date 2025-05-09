@@ -54,7 +54,7 @@ export class BookComponent {
         } else {
           this.error = 'Invalid response format';
         }
-      },
+      }, 
       error: (err) => {
         this.error = 'Failed to fetch books';
         console.error('Fetch error:', err);
@@ -101,8 +101,5 @@ export class BookComponent {
       this.sortBooks(sortOrder);
     }
   }
-  
-  
- 
-  
+   
 }
