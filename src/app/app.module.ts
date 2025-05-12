@@ -7,10 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './Component/auth/auth.component';
@@ -18,6 +18,7 @@ import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { BookComponent } from './Component/book/book.component';
 import { BookdetailsComponent } from './Component/bookdetails/bookdetails.component';
 import { CartComponent } from './Component/cart/cart.component';
+
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { CartComponent } from './Component/cart/cart.component';
     BookComponent,
     BookdetailsComponent,
     CartComponent,
+ 
     
   ],
   imports: [
@@ -41,6 +43,8 @@ import { CartComponent } from './Component/cart/cart.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatIconModule,
+    MatRadioModule,
+    MatCardModule,
     HttpClientModule
   ],
   providers: [

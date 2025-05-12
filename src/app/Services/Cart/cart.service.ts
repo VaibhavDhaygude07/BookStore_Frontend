@@ -79,5 +79,60 @@ getItemByCartId(cartId: number) {
     };
     return this.httpService.put(`https://localhost:7288/api/cart/${cartId}`, data, true, headers);
   }
+
+//   placeOrder(cartItemId: number, customerId: number) {
+//   const headers = {
+//     headers: {
+//       'Content-Type': 'application/json',
+//       Authorization: `Bearer ${this.token}`
+//     }
+//   };
+//   return this.httpService.postMethod(`https://localhost:7288/api/order`, {}, true, headers);
+// }
+
+
+
+   addCustomer(data: any) {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`
+      }
+    };
+    return this.httpService.postMethod('https://localhost:7288/api/customer/customer', data, true, headers);
+  }
+
  
+
+  getCustomer() {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`
+      }
+    };
+    return this.httpService.get('https://localhost:7288/api/customer', true, headers);
+  }
+
+  getAllOrders() {
+  const headers = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`
+    }
+  };
+  return this.httpService.get('https://localhost:7288/api/order', true, headers);
 }
+
+ placeOrder(finalOrder: any) {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`
+      }
+    };
+    return this.httpService.postMethod('https://localhost:7288/api/order', finalOrder, true, headers);
+  }
+
+}
+

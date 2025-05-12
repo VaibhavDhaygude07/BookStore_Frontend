@@ -1,3 +1,4 @@
+<div  class="page-wrapper">
 <div class="cart-box">
   <!-- Header and Location -->
   <div class="cart-header">
@@ -27,13 +28,60 @@
         <button (click)="increaseQuantity(item)">+</button>
       </div>
 
-      <button class="remove-button" (click)="removeItemFromCart(item)">Remove</button>
+          <div class="action-buttons">
+            <button class="remove-button" (click)="removeItemFromCart(item)">Remove</button>
+            
+          </div>
+
+           
     </div>
   </div>
 
-  <!-- Place order button -->
-  <div class="place-order-container">
-    <button class="place-order-btn">PLACE ORDER</button>
-  </div>
+   <div class="place-order-container">
+  <button class="primary-btn" (click)="placeOrder()">Place Order</button>
 </div>
+
+  
+</div>
+
+  <div *ngIf="showCustomerDetails" class="customer-form-section">
+    <h2>Customer Details</h2>
+
+    <form>
+      <input type="text" placeholder="Full Name" [(ngModel)]="customer.fullName" name="fullName" />
+       <input type="text" placeholder="Phone Number" [(ngModel)]="customer.phoneNumber" name="phoneNumber" /> 
+      <textarea placeholder="Address" [(ngModel)]="customer.address" name="address"></textarea>
+      <input type="text" placeholder="City" [(ngModel)]="customer.city" name="city" />
+      <input type="text" placeholder="State" [(ngModel)]="customer.state" name="state" />
+
+     
+    </form>
+      <div class="place-order-container"> <button class="primary-btn" (click)="continueToOrderSummary()">Continue</button></div>
+   
+  </div>
+
+
+  <!-- Order Summary -->
+<div *ngIf="showOrderSummary" class="order-summary-section">
+  <h2>Order Summary</h2>
+
+  <div *ngFor="let item of cartItems" class="order-item">
+    <div class="left-section">
+      <img [src]="item.book?.bookImage || 'assets/default-book.png'" class="book-image" alt="Book" />
+    </div>
+    <div class="order-book-details">
+      <strong>{{ item.book?.bookName }}</strong> by {{ item.book?.author }}<br />
+      Quantity: {{ item.bookQuantity }} <br />
+      Price: Rs. {{ item.book?.discountPrice }} × {{ item.bookQuantity }} = 
+      <strong>Rs. {{ item.bookQuantity * (item.book?.discountPrice || 0) }}</strong>
+    </div>
+  </div>
+
+  
+
+  <div class="place-order-container"><button class="primary-btn" (click)="onCheckout()">Checkout</button></div>
+  
+</div>
+
 <router-outlet></router-outlet>
+</div>

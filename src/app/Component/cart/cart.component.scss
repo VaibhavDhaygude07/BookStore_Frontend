@@ -1,20 +1,23 @@
-.cart-box {
+.cart-box,
+.customer-form-section,
+.order-summary-section {
   max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  background-color: white;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #ffffff;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fafafa;
-  margin-top: 30px; /* Add spacing from top */
+  box-sizing: border-box;
 }
 
-/* Header and Location */
+.page-wrapper {
+  min-height: 250vh;
+}
+
+/* Cart Header */
 .cart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
 }
 
 .cart-header h2 {
@@ -30,21 +33,18 @@
   font-weight: bold;
 }
 
-/* Each item row */
+/* Cart Items */
 .item-row {
   display: flex;
-  align-items: center; /* Align items horizontally */
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  align-items: center;
 }
 
 .item-row:last-child {
-  margin-bottom: 0;
   border-bottom: none;
+  margin-bottom: 0;
   padding-bottom: 0;
 }
 
-/* Book image */
 .left-section {
   margin-right: 20px;
 }
@@ -56,7 +56,6 @@
   border-radius: 6px;
 }
 
-/* Book details */
 .middle-section {
   flex: 1;
 }
@@ -83,11 +82,9 @@
   font-size: 14px;
 }
 
-/* Quantity controls and remove button */
 .quantity-section {
   display: flex;
   align-items: center;
-  gap: 10px;
   margin-right: 20px;
 }
 
@@ -108,6 +105,7 @@
 }
 
 .remove-button {
+  margin-top: 10px;
   background: none;
   border: none;
   color: #a03037;
@@ -116,21 +114,110 @@
   font-size: 14px;
 }
 
-/* Place order button */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 400px;
+}
+
 .place-order-container {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
-  align-items: center; /* Align place order button in line with quantity */
 }
 
-.place-order-btn {
-  background-color: #337ab7;
+.place-order-btn,
+.primary-btn {
+  background-color: #2b7a78;
   color: white;
   padding: 12px 28px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.place-order-btn:hover,
+.primary-btn:hover {
+  background-color: #205e5c;
+}
+
+/* Customer Form */
+.customer-form-section h2,
+.order-summary-section h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.customer-form-section form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.customer-form-section input,
+.customer-form-section textarea,
+.customer-form-section select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.customer-form-section textarea {
+  grid-column: 1 / -1;
+  resize: vertical;
+  height: 80px;
+}
+
+.customer-form-section label {
+  grid-column: 1 / -1;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+/* Order Summary Layout Update */
+.order-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-item .left-section {
+  flex-shrink: 0;
+}
+
+.order-item .book-image {
+  width: 110px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.order-book-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.order-book-details strong {
+  color: #000;
 }
