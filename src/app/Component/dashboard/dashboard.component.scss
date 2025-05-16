@@ -1,83 +1,156 @@
-/* NAVBAR STYLES */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #a03037;
-    padding: 10px 40px;
-    color: white;
-  }
-  
+
+.navbar {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 60px;
+  background-color: #b71c1c;
+  color: white;
+  width: 100%;
+  gap: 150px; 
+
   .navbar-section {
     display: flex;
     align-items: center;
-  }
-  
-  .logo-section {
-    gap: 10px;
-  }
-  
-  .logo-text {
-    font-size: 22px;
-    font-weight: bold;
-  }
-
-  a.router-link-active, .logo-link {
-    color: white !important; 
-    text-decoration: none;    
-  }
-  
-  a.router-link-active:hover, .logo-link:hover {
-    color: white !important;  
-    text-decoration: none;    
-  }
-  
-  .search-section {
-    flex: 1;
-    display: flex;
     justify-content: center;
   }
-  
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: bold;
+      margin-left: 6px;
+    }
+  }
+
   .search-section input {
-    width: 500px;
-    padding: 8px 14px;
+    padding: 12px;
     border-radius: 4px;
     border: none;
-    outline: none;
-    font-size: 16px;
-  }
-  
-  .nav-icons {
-    gap: 30px;
-  }
-  
-  .nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 600px;
+    max-width: 100%;
     font-size: 14px;
-    cursor: pointer;
-    color: white;
   }
-  
-  .material-icons {
-    font-size: 24px;
+
+  .nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+      position: relative;
+      min-width: 60px;
+
+      mat-icon {
+        font-size: 28px;
+        color: white;
+      }
+
+      span {
+        font-size: 15px;
+        margin-top: 4px;
+      }
+    }
+
+    .user-dropdown {
+      position: relative;
+
+      .dropdown-menu {
+        position: absolute;
+        top: 55px;
+        right: 0;
+        background: #fff;
+        color: #000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        width: 220px;
+        padding: 10px;
+        z-index: 100;
+
+        p {
+          font-weight: bold;
+          margin: 0 0 10px 0;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+
+          li {
+            display: flex;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 14px;
+            cursor: pointer;
+
+            mat-icon {
+              margin-right: 8px;
+            }
+          }
+        }
+
+        button {
+          margin-top: 10px;
+          width: 100%;
+          padding: 6px;
+          background-color: transparent;
+          border: 1px solid #d32f2f;
+          color: #d32f2f;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+      }
+    }
   }
+}
+.footer {
   
-  /* FOOTER */
-  .footer {
-    background-color: #2c1c1c;
-    color: white;
-    text-align: center;
-    // padding: 6px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-     
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #b71c1c;
+  flex-shrink: 0;
+  margin-top: auto; 
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-wrap: nowrap;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 0 10px;
+
+    .logo-link .logo-text {
+      display: none; // Hide "Bookstore" text
+    }
+
+    .search-section input {
+      width: 150px; // Reduce search box size
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    .nav-icons {
+      gap: 10px;
+
+      .nav-item span {
+        font-size: 12px;
+      }
+
+      .nav-item mat-icon {
+        font-size: 24px;
+      }
+    }
   }
-  
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../Services/Cart/cart.service';
+import { Router } from '@angular/router';
+import { OrderService } from '../../Services/Order/order.service';
 
 interface CartItem {
   cartItemId: number;
@@ -44,11 +46,12 @@ export class CartComponent implements OnInit {
 
   showCustomerDetails: boolean = false;
   showOrderSummary: boolean = false;
+  
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,private orderService:OrderService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log('CartComponent initialized');
+    
     this.getAllCartItems();
   }
 
@@ -85,7 +88,7 @@ export class CartComponent implements OnInit {
   decreaseQuantity(item: CartItem): void {
     console.log(`Decreasing quantity for CartItem ID: ${item.cartItemId}`);
     if (item.bookQuantity === 1) {
-      console.log('Quantity is 1, removing item...');
+      console.log('Quantity is 1, removing item');
       this.removeItemFromCart(item);
     } else {
       this.cartService.removeBookFromCart(item.cartItemId).subscribe({
@@ -114,10 +117,12 @@ export class CartComponent implements OnInit {
     });
   }
 
-   placeOrder(): void {
-    console.log('Proceeding to enter customer details...');
-    this.showCustomerDetails = true;
-  }
+  placeOrder(): void {
+  console.log('Proceeding to enter customer details');
+  this.showCustomerDetails = true;
+  this.loadCustomer(); // Load and populate customer details
+}
+
 
   continueToOrderSummary(): void {
     console.log('Customer Details entered:', this.customer);
@@ -133,24 +138,43 @@ export class CartComponent implements OnInit {
   }
 
   onCheckout(): void {
-    const finalOrder = {
-      customerDetails: this.customer,
-      items: this.cartItems
-    };
-    console.log('Final Order Object before API call:', finalOrder);
-    // TODO: Call order API
-  }
+  this.orderService.placeOrder().subscribe({
+    next: (res) => {
+      console.log('Order placed successfully:', res);
+      this.router.navigate(['/dashboard/order-success']);
+    },
+    error: (err) => {
+      console.error('Order placement failed:', err);
+    }
+  });
+}
 
-  loadCustomer(): void {
-    console.log('Loading existing customer details...');
-    this.cartService.getCustomer().subscribe({
-      next: (data) => {
-        this.customer = data;
+
+loadCustomer(): void {
+  console.log('Loading existing customer details...');
+  this.cartService.getCustomer().subscribe({
+    next: (res: any) => {
+      console.log('Raw customer response from API:', res);
+      const data = res?.data || res;
+      if (data && data.fullName) {
+        this.customer = {
+          fullName: data.fullName,
+          phoneNumber: data.phoneNumber,
+          address: data.address,
+          city: data.city,
+          state: data.state,
+          type: data.type || 'Home'
+        };
         console.log('Customer data loaded:', this.customer);
-      },
-      error: (err) => {
-        console.error('Error loading customer:', err);
+      } else {
+        console.warn('No customer data found.');
       }
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Error loading customer:', err);
+    }
+  });
+}
+
+
 }

@@ -1,0 +1,24 @@
+<div class="wishlist-container">
+  <div class="breadcrumb">Home / <span>My Wishlist</span></div>
+
+  <div class="wishlist-card" *ngIf="wishlist.length > 0; else noItems">
+    <h3>My Wishlist ({{ wishlist.length.toString().padStart(2, '0') }})</h3>
+
+    <div class="wishlist-item" *ngFor="let item of wishlist">
+       <img [src]="item.book?.bookImage || 'assets/default-book.png'" class="book-image" alt="Book" />
+      <div class="book-details">
+        <h4>{{ item.book.bookName }}</h4>
+        <p class="author">by {{ item.book.author }}</p>
+        <div class="prices">
+          <span class="price">Rs. {{ item.book.discountPrice }}</span>
+          <span class="original-price">Rs. {{ item.book.originalPrice }}</span>
+        </div>
+      </div>
+      <mat-icon class="delete-icon" (click)="removeFromWishlist(item.bookId)">delete</mat-icon>
+    </div>
+  </div>
+
+  <ng-template #noItems>
+    <div class="empty-message">Your wishlist is empty.</div>
+  </ng-template>
+</div>

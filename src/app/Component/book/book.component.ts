@@ -32,19 +32,18 @@ export class BookComponent {
   constructor(private bookService: BookService) {}
 
   ngOnInit(): void {
-    this.fetchBooks();
-  }
+  this.fetchBooks();
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['searchTerm']) {
-      const term = this.searchTerm.trim();
-      if (term.length > 0) {
-        this.searchBooks(term);
-      } else {
-        this.fetchBooks();
-      }
+  this.bookService.searchText$.subscribe((term: string) => {
+    const trimmedTerm = term.trim();
+    if (trimmedTerm.length > 0) {
+      this.searchBooks(trimmedTerm);
+    } else {
+      this.fetchBooks();
     }
-  }
+  });
+}
+
 
   fetchBooks(): void {
     this.bookService.getAllBooks().subscribe({
@@ -62,20 +61,17 @@ export class BookComponent {
     });
   }
 
-  searchBooks(author: string): void {
-    this.bookService.searchBook(author).subscribe({
+    searchBooks(term: string): void {
+    this.bookService.searchBook(term).subscribe({
       next: (res: any) => {
-        if (res.success && res.data) {
-          this.books = res.data;
-        } else {
-          this.books = [];
-        }
+        this.books = res.data || [];
       },
       error: () => {
         this.error = 'Search failed';
       }
     });
   }
+
 
   sortBooks(order: 'asc' | 'desc'): void {
     this.bookService.sortBooksByPrice(order).subscribe({

@@ -7,14 +7,36 @@
   </div>
 
   <div class="navbar-section search-section">
-    <input type="text" placeholder="Search ..." (input)="onSearchChange($event)" />
+    <input type="text" placeholder="Search " (input)="onSearchChange($event)" />
   </div>
 
   <div class="navbar-section nav-icons">
-    <div class="nav-item">
+    <div class="nav-item user-dropdown" (click)="toggleDropdown()">
       <mat-icon aria-label="Profile">person</mat-icon>
-      <span>Profile</span>
+      <span>{{ username }}</span>
+
+      <div *ngIf="dropdownOpen" class="dropdown-menu">
+        <p>Hello {{ username }},</p>
+        <ul>
+          
+          <li>
+         <a routerLink="/dashboard/order-details" (click)="toggleDropdown()">
+
+            <mat-icon>assignment</mat-icon> My Orders
+          </a>
+        </li>
+
+                <li>
+          <a routerLink="/dashboard/wishlist" (click)="toggleDropdown()">
+            <mat-icon>favorite_border</mat-icon> My Wishlist
+          </a>
+        </li>
+         
+        </ul>
+        <button (click)="logout()">Logout</button>
+      </div>
     </div>
+
     <a routerLink="/dashboard/cart" class="nav-item">
       <mat-icon aria-label="Cart">shopping_cart</mat-icon>
       <span>Cart</span>
@@ -22,10 +44,11 @@
   </div>
 </header>
 
-<!-- Wrapping content so footer does not overlap -->
 <div class="main-content">
   <router-outlet></router-outlet>
 </div>
+
+
 
 <footer class="footer">
   <p>Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>

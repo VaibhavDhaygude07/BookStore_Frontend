@@ -48,14 +48,13 @@
     <h2>Customer Details</h2>
 
     <form>
-      <input type="text" placeholder="Full Name" [(ngModel)]="customer.fullName" name="fullName" />
-       <input type="text" placeholder="Phone Number" [(ngModel)]="customer.phoneNumber" name="phoneNumber" /> 
-      <textarea placeholder="Address" [(ngModel)]="customer.address" name="address"></textarea>
-      <input type="text" placeholder="City" [(ngModel)]="customer.city" name="city" />
-      <input type="text" placeholder="State" [(ngModel)]="customer.state" name="state" />
+  <input type="text" placeholder="Full Name" [(ngModel)]="customer.fullName" name="fullName" />
+  <input type="text" placeholder="Phone Number" [(ngModel)]="customer.phoneNumber" name="phoneNumber" /> 
+  <textarea placeholder="Address" [(ngModel)]="customer.address" name="address"></textarea>
+  <input type="text" placeholder="City" [(ngModel)]="customer.city" name="city" />
+  <input type="text" placeholder="State" [(ngModel)]="customer.state" name="state" />
+</form>
 
-     
-    </form>
       <div class="place-order-container"> <button class="primary-btn" (click)="continueToOrderSummary()">Continue</button></div>
    
   </div>

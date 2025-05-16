@@ -45,7 +45,7 @@ export class AuthComponent {
       this.userService.Login(reqData).subscribe({
         next: (res: any) => {
           console.log('Login successful:', res);
-          localStorage.setItem('token', res.token);
+           localStorage.setItem('token', res.data.token); 
           this.snackBar.open('Login Successful', '', { duration: 5000 });
         },
         error: (err) => {

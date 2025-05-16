@@ -1,0 +1,21 @@
+<div class="breadcrumb">
+  <span>Home</span> / <strong>My Order</strong>
+</div>
+
+<div class="order-container" *ngFor="let order of orders">
+  <div class="order-card">
+    <img [src]="order.bookImage" alt="{{ order.bookName }}" class="book-image" />
+    <div class="order-info">
+      <h3>{{ order.bookName }}</h3>
+      <p class="author">by {{ order.author }}</p>
+      <div class="price">
+        <span class="selling-price">Rs. {{ order.price }}</span>
+        <span class="original-price">Rs. {{ order.originalPrice }}</span>
+      </div>
+    </div>
+    <div class="order-status">
+      <span class="status-dot"></span>
+      <span>Order Placed on {{ order.orderDate | date:'MMMM dd' }}</span>
+    </div>
+  </div>
+</div>

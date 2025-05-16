@@ -114,25 +114,26 @@ getItemByCartId(cartId: number) {
     return this.httpService.get('https://localhost:7288/api/customer', true, headers);
   }
 
-  getAllOrders() {
-  const headers = {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.token}`
-    }
-  };
-  return this.httpService.get('https://localhost:7288/api/order', true, headers);
-}
+//   getAllOrders() {
+//   const headers = {
+//     headers: {
+//       'Content-Type': 'application/json',
+//       Authorization: `Bearer ${this.token}`
+//     }
+//   };
+//   return this.httpService.get('https://localhost:7288/api/order', true, headers);
+// }
 
- placeOrder(finalOrder: any) {
-    const headers = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.token}`
-      }
-    };
-    return this.httpService.postMethod('https://localhost:7288/api/order', finalOrder, true, headers);
-  }
+// placeOrder() {
+//   const headers = {
+//     headers: {
+//       'Content-Type': 'application/json',
+//       Authorization: `Bearer ${this.token}`
+//     }
+//   };
+//   return this.httpService.postMethod('https://localhost:7288/api/order', {}, true, headers);
+// }
+
 
 }
 

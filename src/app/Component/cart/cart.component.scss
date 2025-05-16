@@ -10,10 +10,10 @@
 }
 
 .page-wrapper {
-  min-height: 250vh;
+  min-height: 100vh;
 }
 
-/* Cart Header */
+
 .cart-header {
   display: flex;
   justify-content: space-between;
@@ -144,7 +144,7 @@
   background-color: #205e5c;
 }
 
-/* Customer Form */
+
 .customer-form-section h2,
 .order-summary-section h2 {
   font-size: 22px;

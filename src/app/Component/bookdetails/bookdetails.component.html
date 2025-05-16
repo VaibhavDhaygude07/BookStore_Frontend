@@ -22,7 +22,8 @@
             </div>
           </ng-template>
   
-          <button class="wishlist-btn">♥ WISHLIST</button>
+         <button class="wishlist-btn" (click)="addToWishlist()">♥ WISHLIST</button>
+
         </div>
       </div>
     </div>
@@ -55,8 +56,9 @@
         <textarea placeholder="Write your review..."></textarea>
         <div class="stars-input">
           <span *ngFor="let star of [1, 2, 3, 4, 5]">☆</span>
+          <button class="submit-review">Submit</button>
         </div>
-        <button class="submit-review">Submit</button>
+       
       </div>
   
       <div class="divider"></div>

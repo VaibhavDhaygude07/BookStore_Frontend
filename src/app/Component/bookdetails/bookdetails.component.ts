@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../../Services/Book/book.service';
 import { CartService } from '../../Services/Cart/cart.service';
+import { WishlistService } from '../../Services/Wishlist/wishlist.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface Book {
   id: number;
@@ -29,10 +31,13 @@ export class BookdetailsComponent implements OnInit {
   isAddedToBag: boolean = false;
   quantity: number = 1;
 
+
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
-    private cartService: CartService
+    private cartService: CartService,
+      private wishlistService: WishlistService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -100,5 +105,20 @@ export class BookdetailsComponent implements OnInit {
       this.quantity--;
     }
   }
-  
+
+ addToWishlist(): void {
+  if (!this.book || !this.book.id) return;
+
+  this.wishlistService.addBookToWishlist(this.book.id).subscribe({
+    next: () => {
+      this.snackBar.open('Book added to wishlist!', '', { duration: 3000 });
+      console.log('Book added to wishlist');
+    },
+    error: (err) => {
+      console.error('Error adding to wishlist:', err);
+      this.snackBar.open('Could not add to wishlist.', '', { duration: 3000 });
+    }
+  });
+}
+
 }

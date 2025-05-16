@@ -18,6 +18,10 @@ import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { BookComponent } from './Component/book/book.component';
 import { BookdetailsComponent } from './Component/bookdetails/bookdetails.component';
 import { CartComponent } from './Component/cart/cart.component';
+import { OrderSuccessComponent } from './Component/order-success/order-success.component';
+import { WishlistComponent } from './Component/wishlist/wishlist.component';
+import { WishlistService } from './Services/Wishlist/wishlist.service';
+import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 
 
 
@@ -29,6 +33,10 @@ import { CartComponent } from './Component/cart/cart.component';
     BookComponent,
     BookdetailsComponent,
     CartComponent,
+    OrderSuccessComponent,
+    WishlistComponent,
+    OrderDetailsComponent
+   
  
     
   ],
