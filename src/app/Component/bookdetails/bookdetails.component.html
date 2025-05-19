@@ -11,7 +11,8 @@
   
         <div class="action-buttons">
           <ng-container *ngIf="!isAddedToBag; else quantityControls">
-            <button class="add-to-bag" (click)="addToBag()">ADD TO BAG</button>
+            <button class="add-to-bag" [disabled]="book.quantity === 0" (click)="addToBag()">ADD TO BAG</button>
+
           </ng-container>
   
           <ng-template #quantityControls>

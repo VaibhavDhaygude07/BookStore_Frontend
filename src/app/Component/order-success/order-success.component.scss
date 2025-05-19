@@ -10,9 +10,9 @@
 }
 
 .success-icon {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 20px;
+  width: 280px;
+  height: 280px;
+  // margin-bottom: 20px;
 }
 
 h2 {
@@ -59,4 +59,15 @@ p {
 
 .continue-btn:hover {
   background-color: #205e5c;
+}
+
+.continue-button{
+  // margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #3371B5;
+  
 }

@@ -15,7 +15,10 @@
 
   <div class="books-grid">
     
-    <div class="book-card" *ngFor="let book of books" [routerLink]="['/dashboard/bookdetails', book.id]">
+    <!-- <div class="book-card" *ngFor="let book of books" [routerLink]="['/dashboard/bookdetails', book.id]">
+       -->
+
+       <div class="book-card" *ngFor="let book of paginatedBooks" [routerLink]="['/dashboard/bookdetails', book.id]">
 
       <div class="book-image-container">
         <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />
@@ -32,7 +35,22 @@
           <span class="current-price">Rs. {{ book.price - book.discountPrice }}</span>
           <span class="original-price">Rs. {{ book.price }}</span>
         </div>
+
+        
       </div>
     </div>
-  </div>  
+  </div> 
+
+  <div class="pagination">
+  <button
+    *ngFor="let page of [].constructor(totalPages); let i = index"
+    (click)="goToPage(i + 1)"
+    [ngClass]="{ 'active-page': currentPage === i + 1 }"
+  >
+    {{ i + 1 }}
+  </button>
 </div>
+
+</div>
+
+

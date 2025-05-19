@@ -74,6 +74,8 @@ export class BookdetailsComponent implements OnInit {
         this.isAddedToBag = true;
         this.quantity = 1;
         console.log('Book added to cart');
+        this.cartService.emitCartRefresh();
+
       },
       error: (err) => {
         console.error('Error adding to cart:', err);
@@ -103,8 +105,11 @@ export class BookdetailsComponent implements OnInit {
   decreaseQuantity(): void {
     if (this.quantity > 1) {
       this.quantity--;
+      
     }
   }
+
+ 
 
  addToWishlist(): void {
   if (!this.book || !this.book.id) return;

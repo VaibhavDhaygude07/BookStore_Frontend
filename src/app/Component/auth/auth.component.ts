@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../Services/User/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -15,7 +16,7 @@ export class AuthComponent {
   loginForm: FormGroup;
   signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService,   private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private userService: UserService,   private router: Router,   private snackBar: MatSnackBar) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -41,12 +42,14 @@ export class AuthComponent {
         EmailId: this.loginForm.value.email,
         Password: this.loginForm.value.password
       };
-  
+      
       this.userService.Login(reqData).subscribe({
         next: (res: any) => {
           console.log('Login successful:', res);
            localStorage.setItem('token', res.data.token); 
           this.snackBar.open('Login Successful', '', { duration: 5000 });
+         
+        this.router.navigate(['/dashboard']);
         },
         error: (err) => {
           console.error('Login Failed:', err);

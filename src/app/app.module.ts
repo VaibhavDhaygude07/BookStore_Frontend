@@ -9,6 +9,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,9 @@ import { OrderSuccessComponent } from './Component/order-success/order-success.c
 import { WishlistComponent } from './Component/wishlist/wishlist.component';
 import { WishlistService } from './Services/Wishlist/wishlist.service';
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
+import { MatBadgeModule } from '@angular/material/badge';
+
+
 
 
 
@@ -53,6 +57,8 @@ import { OrderDetailsComponent } from './Component/order-details/order-details.c
     MatIconModule,
     MatRadioModule,
     MatCardModule,
+    MatPaginatorModule,
+    MatBadgeModule,
     HttpClientModule
   ],
   providers: [

@@ -46,6 +46,8 @@ export class CartComponent implements OnInit {
 
   showCustomerDetails: boolean = false;
   showOrderSummary: boolean = false;
+
+   cartCount = 0;
   
 
   constructor(private cartService: CartService,private orderService:OrderService, private router: Router) {}
@@ -77,6 +79,7 @@ export class CartComponent implements OnInit {
       next: () => {
         item.bookQuantity++;
         this.getAllCartItems();
+        
         console.log('Quantity increased to:', item.bookQuantity);
       },
       error: (err) => {
@@ -104,23 +107,26 @@ export class CartComponent implements OnInit {
     }
   }
 
-  removeItemFromCart(item: CartItem): void {
-    console.log(`Removing item from cart: CartItem ID: ${item.cartItemId}`);
-    this.cartService.removeBookFromCart(item.cartItemId).subscribe({
-      next: () => {
-        this.getAllCartItems();
-        console.log('Item removed successfully');
-      },
-      error: (err) => {
-        console.error('Error removing item from cart:', err);
-      }
-    });
-  }
+ removeItemFromCart(item: CartItem): void {
+  console.log(`Removing item from cart: CartItem ID: ${item.cartItemId}`);
+  this.cartService.removeBookFromCart(item.cartItemId).subscribe({
+    next: () => {
+      this.getAllCartItems();
+      console.log('Item removed successfully');
+    },
+    error: (err) => {
+      console.error('Error removing item from cart:', err);
+    }
+  });
+}
+
+
+  
 
   placeOrder(): void {
   console.log('Proceeding to enter customer details');
   this.showCustomerDetails = true;
-  this.loadCustomer(); // Load and populate customer details
+  this.loadCustomer(); 
 }
 
 
@@ -175,6 +181,8 @@ loadCustomer(): void {
     }
   });
 }
+
+  
 
 
 }

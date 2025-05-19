@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { BookService } from '../../Services/Book/book.service';
 
+
 interface Book {
   id: number;
   description: string;
@@ -23,10 +24,13 @@ interface Book {
 })
 export class BookComponent {
   @Input() searchTerm: string = '';
-  books: Book[] = [];
+   books: Book[] = [];
+  paginatedBooks: Book[] = [];
   error: any;
- 
 
+  currentPage: number = 1;
+  pageSize: number = 8;
+  totalPages: number = 0;
 
 
   constructor(private bookService: BookService) {}
@@ -50,6 +54,8 @@ export class BookComponent {
       next: (response: any) => {
         if (response && response.success && response.data) {
           this.books = response.data;
+          this.setupPagination();
+
         } else {
           this.error = 'Invalid response format';
         }
@@ -97,5 +103,21 @@ export class BookComponent {
       this.sortBooks(sortOrder);
     }
   }
-   
+
+   setupPagination(): void {
+    this.totalPages = Math.ceil(this.books.length / this.pageSize);
+    this.updatePaginatedBooks();
+  }
+
+  updatePaginatedBooks(): void {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.paginatedBooks = this.books.slice(startIndex, endIndex);
+  }
+
+  goToPage(page: number): void {
+    this.currentPage = page;
+    this.updatePaginatedBooks();
+  }
+ 
 }

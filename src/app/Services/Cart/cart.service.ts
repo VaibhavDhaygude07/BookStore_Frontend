@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../Http/http.service';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { RefreshService } from '../Refresh/refresh.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  //  token: any;
- constructor(private httpclient:HttpClient, private httpService: HttpService) { }
+   private cartCountSource = new BehaviorSubject<number>(0);
+  cartCount$ = this.cartCountSource.asObservable();
+  
+ constructor(private httpclient:HttpClient, private httpService: HttpService,private refreshService: RefreshService) { }
 
    private get token() {
-    return localStorage.getItem('token'); // or sessionStorage.getItem('token')
+    return localStorage.getItem('token'); 
+  }
+   emitCartRefresh() {
+    this.refreshService.emitCartRefresh();
   }
 
 getItemByCartId(cartId: number) {
+  
   const headers = {
     headers: {
       'Content-Type': 'application/json',
@@ -60,6 +68,8 @@ getItemByCartId(cartId: number) {
     return this.httpService.delete(`https://localhost:7288/api/cart/${cartId}`, true, headers);
   }
 
+ 
+
   getCustomerDetails() {
     const headers = {
       headers: {
@@ -79,18 +89,6 @@ getItemByCartId(cartId: number) {
     };
     return this.httpService.put(`https://localhost:7288/api/cart/${cartId}`, data, true, headers);
   }
-
-//   placeOrder(cartItemId: number, customerId: number) {
-//   const headers = {
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: `Bearer ${this.token}`
-//     }
-//   };
-//   return this.httpService.postMethod(`https://localhost:7288/api/order`, {}, true, headers);
-// }
-
-
 
    addCustomer(data: any) {
     const headers = {
@@ -133,6 +131,7 @@ getItemByCartId(cartId: number) {
 //   };
 //   return this.httpService.postMethod('https://localhost:7288/api/order', {}, true, headers);
 // }
+
 
 
 }
